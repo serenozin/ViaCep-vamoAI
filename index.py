@@ -1,27 +1,30 @@
+from logging import log
 from dash_bootstrap_components._components import Modal
+from dash_bootstrap_components._components.Card import Card
+from dash_bootstrap_components._components.ModalBody import ModalBody
 import dash_core_components as dcc
+from dash_core_components.Markdown import Markdown
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
-
+from dash_html_components.Center import Center
+from contact import lista
 from app import server
 from app import app
 #importar as layouts
-from pages import home, sobre
+from pages import home
 
 
 dropdown = dbc.DropdownMenu(
     children=[
-        dbc.DropdownMenuItem("Home", href="/"),
         dbc.DropdownMenuItem("Documentação", href="/"),
-        dbc.DropdownMenuItem("Github", href="/"),
-        dbc.DropdownMenuItem("Contato", href="contato")
+        dbc.DropdownMenuItem("Github", href="https://github.com/serenozin/ViaCep-vamoAI"),
+        dbc.DropdownMenuItem("Contato", id="buttom-contato")
     ],
     nav = True,
     in_navbar = True,
     label = "Explore",
 )
-
 navbar = dbc.Navbar(
     dbc.Container(
         [
@@ -46,10 +49,21 @@ navbar = dbc.Navbar(
             ),
         ]
     ),
-    color="dark",
+    color="#666666",
     dark=True,
     className="mb-4",
 )
+
+contatos =  [
+                dbc.ModalHeader(dbc.Col(html.H1("Contatos"),align="True")),
+                dbc.ModalBody(lista),
+                dbc.ModalFooter(
+                    dbc.Button(
+                        "Close", id="close-contatos", className="ml-auto"
+                    )
+                ),
+            ]
+
 
 def toggle_navbar_collapse(n, is_open):
     if n:
@@ -67,19 +81,28 @@ for i in [2]:
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     navbar,
-    html.Div(id='page-content')
+    html.Div(id='page-content'),
+    dbc.Modal(contatos, centered=True,id="modal-contatos",size="lg")
 ])
+
+
+@app.callback(
+            Output("modal-contatos", "is_open"),
+            [Input('buttom-contato', "n_clicks"), Input("close-contatos", "n_clicks")],
+            [State("modal-contatos", "is_open")],
+)   
+
+def toggle_modal(n, n2, is_open):
+    if n or n2:
+        return not is_open
+    return is_open
+    
+
 
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '':
-        pass
-        #return name.layout
-    elif pathname == '/contato':
-        pass
-    else:
-        return home.layout
+    return home.layout
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True,)
