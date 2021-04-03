@@ -35,3 +35,10 @@ class Cidades:
 
         cidades = requests.get(self.url).json()
         return [{"label": i["Nome"], "value": i["Nome"]} for i in cidades if i["Estado"] == estado_id]
+
+class Mapa:
+    def __init__(self, cep):
+        self.cep = cep
+        self.url = f"https://www.google.com.br/maps?q={cep[:5]}-{cep[5:]},%20Brasil&output=embed"
+
+    
