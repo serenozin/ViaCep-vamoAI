@@ -7,7 +7,7 @@ import dash_bootstrap_components as dbc
 from app import server
 from app import app
 #importar as layouts
-from pages import home, sobre
+from pages import home, sobre, endereco
 
 
 dropdown = dbc.DropdownMenu(
