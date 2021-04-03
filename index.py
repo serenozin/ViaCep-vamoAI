@@ -1,3 +1,4 @@
+from dash_bootstrap_components._components import Modal
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
@@ -6,7 +7,7 @@ import dash_bootstrap_components as dbc
 from app import server
 from app import app
 #importar as layouts
-from apps import home
+from pages import home, sobre
 
 
 dropdown = dbc.DropdownMenu(
@@ -14,6 +15,7 @@ dropdown = dbc.DropdownMenu(
         dbc.DropdownMenuItem("Home", href="/"),
         dbc.DropdownMenuItem("Documentação", href="/"),
         dbc.DropdownMenuItem("Github", href="/"),
+        dbc.DropdownMenuItem("Contato", href="contato")
     ],
     nav = True,
     in_navbar = True,
@@ -68,16 +70,14 @@ app.layout = html.Div([
     html.Div(id='page-content')
 ])
 
-
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '':
         pass
         #return name.layout
-    elif pathname == '':
+    elif pathname == '/contato':
         pass
-        #return name.layout
     else:
         return home.layout
 
