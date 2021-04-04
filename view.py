@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
 
-from model import Estados, Cidades, Endereco, Mapa
+from controller import Andress, SearchOptions
 
 external_stylesheets = [
     'https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css',
@@ -73,8 +73,8 @@ app.layout = html.Div(
                                         
                                         html.H3("Endereço: "),
                                         html.P(),
-                                        dbc.Input(id="input_cep", placeholder="CEP", type="text"),
-                                        dbc.Select(id="dropdown_estado", options=Estados().get_all(), placeholder="Estado"),
+                                        # dbc.Input(id="input_cep", placeholder="CEP", type="text"),
+                                        dbc.Select(id="dropdown_estado", options=SearchOptions().all_states(), placeholder="Estado"),
                                         html.P(),
                                         dbc.Select(id="dropdown_cidade", placeholder="Cidade", ),
                                         html.P(),
@@ -154,10 +154,7 @@ app.layout = html.Div(
     prevent_initial_call=True
 )
 def update_dropdown_cidade(estado):
-    id = Estados().get_id(estado)
-    options = Cidades().get_cidade_from_estadoid(id)
-
-    return options
+    return SearchOptions().cities_from_state(estado)
 
 @app.callback(
     Output("collapse_logradouro", "is_open"),
@@ -174,6 +171,8 @@ def update_dropdown_cidade(value):
     Output("collapse_output", "is_open"),
     Output("collapse_download", "is_open"),
     Output("status_code", "children"),
+    Output("collapse_mapa", "is_open"),
+    Output("iframe_mapa", "src"),
     Input("dropdown_rua", "value"),
     [State("dropdown_estado", "value"),
     State("dropdown_cidade", "value"),
@@ -183,46 +182,51 @@ def update_dropdown_cidade(value):
 def update_dropdown_cidade(logradouro, estado, cidade):
     status200 = dbc.Row(dbc.Badge("200 success", color="success"), justify="center")
     status400 = dbc.Row(dbc.Badge("400 bad request", color="danger"), justify="center")
-    
+    endereco = Andress(estado, cidade, logradouro)
     children = []
     status_code = []
 
     if len(logradouro) == 0:
         collapse = False
         download = False
+        collapse_mapa = False
+        iframe_mapa = None
     elif len(logradouro) < 3:
         collapse = True
         download = False
+        collapse_mapa = False
+        iframe_mapa = None
         status_code.append(status400)
         status_code.append(html.P())
         children.append(html.P("sua busca precisa ter pelo menos 3 caracteres"))
     elif len(logradouro) >= 3:
-        input = Endereco().request_by_endereco(estado, cidade, logradouro)
         collapse = True
         download = True
+        collapse_mapa = True
+        iframe_mapa = endereco.mapa()
         status_code.append(status200)
         status_code.append(html.P())
-        for i in input:
+        for i in endereco.to_json():
             for key in i:
                 if i[key] != "":
                     children.append(html.P(f"{key.upper()}: {i[key]}"))
             children.append(html.Hr())
 
-    return children, collapse, download, status_code
+    return children, collapse, download, status_code, collapse_mapa, iframe_mapa
 
-@app.callback(
-    Output("collapse_mapa", "is_open"),
-    Output("iframe_mapa", "src"),
-    Input("input_cep", "value"),
-    prevent_initial_call=True
-)
-def show_map(cep):
+# @app.callback(
+#     Output("collapse_mapa", "is_open"),
+#     Output("iframe_mapa", "src"),
+#     Input("input_cep", "value"),
+#     prevent_initial_call=True
+# )
+# def show_map(cep):
     
-    if len(cep) == 8:
-        collapse = True
-        iframe = Mapa(cep).url
-    else:
-        collapse = False
-        iframe = None
+#     if len(cep) == 8:
+#         collapse = True
+#         iframe = Mapa(cep).url
+#     else:
+#         collapse = False
+#         iframe = None
 
-    return collapse, iframe
+#     return collapse, iframe
