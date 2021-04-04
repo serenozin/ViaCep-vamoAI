@@ -8,7 +8,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 from dash_html_components.Center import Center
-from contact import lista
+from pages import contact
 from app import server
 from app import app
 #importar as layouts
@@ -56,7 +56,7 @@ navbar = dbc.Navbar(
 
 contatos =  [
                 dbc.ModalHeader(dbc.Col(html.H1("Contatos"),align="True")),
-                dbc.ModalBody(lista),
+                dbc.ModalBody(contact.lista),
                 dbc.ModalFooter(
                     dbc.Button(
                         "Close", id="close-contatos", className="ml-auto"
