@@ -12,8 +12,7 @@ from pages import contact
 from app import server
 from app import app
 #importar as layouts
-from pages import home
-
+from pages import contact, home
 
 dropdown = dbc.DropdownMenu(
     children=[
