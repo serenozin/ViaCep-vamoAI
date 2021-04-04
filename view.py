@@ -1,14 +1,9 @@
-from logging import PlaceHolder
 import dash
-from dash_bootstrap_components._components.Button import Button
-from dash_bootstrap_components._components.Collapse import Collapse
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
-from dash_html_components import Div
-from numpy.core.fromnumeric import size
-from numpy.core.shape_base import block
 
 from model import Estados, Cidades, Endereco, Mapa
 
@@ -93,8 +88,9 @@ app.layout = html.Div(
                                             dbc.Col(
                                                 dbc.Collapse(
                                                     [
+                                                        dbc.Col(id="card_output"),
                                                         html.Div(id="status_code"),
-                                                        html.Div(id="card_output", style={'overflowy': 'scroll'},),
+                                                        # html.Div(id="card_output", style={'overflowy': 'scroll'},),
                                                         html.P(),
                                                     
                                                     ],
@@ -113,15 +109,22 @@ app.layout = html.Div(
                     lg=5,
                     # align="stretch"
                 ),
-                Collapse(
-                    dbc.Card(
-                        [
-                            html.Iframe(id="iframe_mapa", height=400, width=600, style={"border": "none"}),
-                    
-                        ],
-                        body=True,
+                dbc.Collapse(
+                    dbc.Col(
+                        dbc.Row(
+                            dbc.Card(
+                                [
+                                    html.Iframe(id="iframe_mapa", height=400, width=600, style={"border": "none"}),
+                            
+                                ],
+                                body=True,
+                            ),
+                        ),
+                        
+
                     ),
-                    id="collapse_mapa"
+                    id="collapse_mapa",
+                    
                 ),
                 dbc.Collapse(
                     dbc.Col(
@@ -203,13 +206,6 @@ def update_dropdown_cidade(logradouro, estado, cidade):
             for key in i:
                 if i[key] != "":
                     children.append(html.P(f"{key.upper()}: {i[key]}"))
-                # children.append(html.P(f"Logradouro: {input[i]['logradouro']}"))
-                # children.append(html.P(f"Complemento: {input[i]['complemento']}"))
-                # children.append(html.P(f"Bairro: {input[i]['bairro']}"))
-                # children.append(html.P(f"Localidade: {input[i]['localidade']}"))
-                # children.append(html.P(f"UF: {input[i]['uf']}"))
-                # children.append(html.P(f"DDD: {input[i]['ddd']}"))
-                # children.append(html.P(f"IBGE: {input[i]['ibge']}"))
             children.append(html.Hr())
 
     return children, collapse, download, status_code
