@@ -29,7 +29,7 @@ class Andress:
         if json is list:
             return Mapa(json[0]["cep"]).request()
         else:
-            return Mapa(json[0]["cep"]).request()
+            return Mapa(json["cep"]).request()
 
 class SearchOptions:
     def __init__(self):
@@ -45,6 +45,3 @@ class SearchOptions:
                 id = dic["ID"]
         
         return [{"label": i["Nome"], "value": i["Nome"]} for i in self.cities if i["Estado"] == id]
-
-
-
