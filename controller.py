@@ -11,10 +11,10 @@ class Andress:
 
     def code(self):
         return self.model.request().status_code
-
+    
     def to_json(self):
         return self.model.request().json()
-
+    
     def to_csv(self):
         json = self.to_json()
         if json is list:
@@ -23,10 +23,12 @@ class Andress:
             json_dict = {0: json}
         df = pd.DataFrame.from_dict(json_dict, orient='index')
         return df.to_csv()
-
+    #bug corrigido, o isistance resolveu.
     def mapa(self):
         json = self.to_json()
-        if json is list:
+        print(type(json))
+        if isinstance(json, list):
+            print(json[0]["cep"])
             return Mapa(json[0]["cep"]).request()
         else:
             return Mapa(json["cep"]).request()
@@ -43,5 +45,5 @@ class SearchOptions:
         for dic in self.states:
             if dic["Sigla"] == sigla_uf:
                 id = dic["ID"]
-        
+                
         return [{"label": i["Nome"], "value": i["Nome"]} for i in self.cities if i["Estado"] == id]
