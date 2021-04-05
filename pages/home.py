@@ -1,7 +1,12 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output, State
+
+from pages import endereco
+from app import app
 
 layout = html.Div(
+    [
     dbc.Collapse(
         [
             dbc.Row(
@@ -29,8 +34,9 @@ layout = html.Div(
                                             dbc.Button("CEP", href="/", color="danger",outline=True,block=True),
                                             className="mt-3", 
                                         ),
+
                                         dbc.Col(
-                                            dbc.Button("Cidade ", href="/", color="danger",outline=True,block=True),
+                                            dbc.Button("Cidade ", href="/", color="danger",outline=True,block=True, id="button-endereco"),
                                             className="mt-3"
                                         ),
                                     ],
@@ -48,6 +54,20 @@ layout = html.Div(
             ),
         ],
         is_open=True,
-    )
-    
+        id="collapse-home",
+    ),
+    dbc.Collapse(endereco.layout, id="collapse-endereco"),
+    ]
 )
+@app.callback(
+    Output("collapse-home", "is_open"),
+    Output("collapse-endereco", "is_open"),
+    Input("button-endereco", "n_clicks"),
+    prevent_initial_call=True
+
+)
+def change_pages(n):
+    if n:
+        endereco = True
+        home = False
+    return home, endereco
