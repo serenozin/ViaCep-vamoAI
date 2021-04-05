@@ -22,17 +22,9 @@ layout = html.Div(
                                 dbc.Card(
                                     [
                                         
-                                        html.H3("Endereço: "),
+                                        html.H3("CEP: "),
                                         html.P(),
                                         dbc.Input(id="input_cep", placeholder="CEP", type="text"),
-                                        #dbc.Select(id="dropdown_estado_cep", options=SearchOptions().all_states(), placeholder="Estado"),
-                                        html.P(),
-                                        #dbc.Select(id="dropdown_cidade_cep", placeholder="Cidade", ),
-                                        html.P(),
-                                        dbc.Collapse(
-                                            dbc.Input(id="dropdown_rua_cep", placeholder="Logradouro", type="text"),
-                                            id="collapse_logradouro_cep"
-                                        ),
                                         
                                         html.P(),
                                         dbc.Row(
@@ -106,13 +98,13 @@ layout = html.Div(
     Output("status_code_cep", "children"),
     Output("collapse_mapa_cep", "is_open"),
     Output("iframe_mapa_cep", "src"),
-    Input("dropdown_rua_cep", "value"),
+    Input("input_cep", "value"),
     prevent_initial_call=True
 )
 def update_dropdown_cidade(cep):
     status200 = dbc.Row(dbc.Badge("200 success", color="success"), justify="center")
     status400 = dbc.Row(dbc.Badge("400 bad request", color="danger"), justify="center")
-    endereco = Andress(cep = cep)
+    endereco = Andress(cep=cep)
     children = []
     status_code = []
 
@@ -129,14 +121,14 @@ def update_dropdown_cidade(cep):
         status_code.append(status400)
         status_code.append(html.P())
         children.append(html.P("sua busca precisa ter pelo menos 3 caracteres"))
-    elif len(cep) == 8:
+    elif len(cep) >= 8:
         collapse = True
         download = True
         collapse_mapa = True
         iframe_mapa = endereco.mapa()
         status_code.append(status200)
         status_code.append(html.P())
-        
+    
         for key in endereco.to_json():
             if endereco.to_json()[key] != "":
                 children.append(html.P(f"{key.upper()}: {endereco.to_json()[key]}"))
