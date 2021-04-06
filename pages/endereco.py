@@ -33,6 +33,7 @@ layout = html.Div(
                                             id="collapse_logradouro"
                                         ),
                                         
+                                        
                                         html.P(),
                                         dbc.Row(
                                             dbc.Col(
@@ -84,13 +85,12 @@ layout = html.Div(
                             dbc.Button(".CSV", block=True, color="danger", size="sm", outline=True)
                             ],
                         ),
-                        width=3,
+                        width=5,
                     ),
                     id="collapse_download"
                 )
             ],
             justify="center",
-            align="center",
             className="h-50"
         ),
         dbc.Row(),
