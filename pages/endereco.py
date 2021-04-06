@@ -48,6 +48,7 @@ layout = html.Div(
                                                     [
                                                         dbc.Col(id="card_output"),
                                                         html.Div(id="status_code"),
+                                                        html.Div(id="counter"),
                                                         # html.Div(id="card_output", style={'overflowy': 'scroll'},),
                                                         html.P(),
                                                     
@@ -125,6 +126,7 @@ def update_dropdown_cidade(value):
     Output("status_code", "children"),
     Output("collapse_mapa", "is_open"),
     Output("iframe_mapa", "src"),
+    Output("counter", "children"),
     Input("dropdown_rua", "value"),
     [State("dropdown_estado", "value"),
     State("dropdown_cidade", "value"),
@@ -132,11 +134,13 @@ def update_dropdown_cidade(value):
     prevent_initial_call=True
 )
 def update_dropdown_cidade(logradouro, estado, cidade):
+    index = 0
     status200 = dbc.Row(dbc.Badge("200 success", color="success"), justify="center")
     status400 = dbc.Row(dbc.Badge("400 bad request", color="danger"), justify="center")
     endereco = Andress(estado, cidade, logradouro)
     children = []
     status_code = []
+    
 
     if len(logradouro) == 0:
         collapse = False
@@ -157,18 +161,23 @@ def update_dropdown_cidade(logradouro, estado, cidade):
         iframe_mapa = endereco.mapa()
         status_code.append(status200)
         status_code.append(html.P())
+
         for i in endereco.as_json():
+            index += 1
             for key in i:
                 if i[key] != "":
                     children.append(html.P(f"{key.upper()}: {i[key]}"))
+                
             children.append(html.Hr())
+    
+    counter = dbc.Row(dbc.Badge(f"O número de resultados foi: {index}"), justify="center")
 
-    return children, collapse, status_code, collapse_mapa, iframe_mapa
+    return children, collapse, status_code, collapse_mapa, iframe_mapa, counter
 
 @app.callback(Output("download_csv", "data"), [Input("b_download_csv", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.csv")
+    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.csv")
 
 @app.callback(Output("download_json", "data"), [Input("b_download_json", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.json")
+    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.json")
