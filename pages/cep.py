@@ -5,7 +5,8 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
-
+from dash_extensions.snippets import send_file
+from dash_extensions import Download
 from controller import Andress, SearchOptions
 from app import app
 
@@ -28,7 +29,7 @@ layout = html.Div(
                                         
                                         html.P(),
                                         dbc.Row(
-                                            dbc.Col(
+                                            dbc.Col([
                                                 dbc.Collapse(
                                                     [
                                                         dbc.Col(id="card_output_cep"),
@@ -37,9 +38,17 @@ layout = html.Div(
                                                         html.P(),
                                                     
                                                     ],
+                                                
                                                     
                                                     id="collapse_output_cep",
                                                 ),
+                                                 dbc.Col(
+                                                    [
+                                                    html.Div([dbc.Button(".JSON",id='download_json', block=True, color="danger", size="sm", outline=True), Download(id='downloadj')]),
+                        
+                                                    html.Div([dbc.Button(".CSV",id='download_csv', block=True, color="danger", size="sm", outline=True), Download(id='download')])
+                                                    ],
+                                                ),]
                                             ),
                                             
                                         ),
@@ -69,18 +78,6 @@ layout = html.Div(
                     id="collapse_mapa_cep",
                     
                 ),
-                dbc.Collapse(
-                    dbc.Col(
-                        dbc.Row(
-                            [
-                            dbc.Button(".JSON", block=True, color="danger", size="sm", outline=True),
-                            dbc.Button(".CSV", block=True, color="danger", size="sm", outline=True)
-                            ],
-                        ),
-                        width=3,
-                    ),
-                    id="collapse_download_cep"
-                )
             ],
             justify="center",
             align="center",
@@ -90,11 +87,15 @@ layout = html.Div(
         dbc.Row(),
     ]
 )
+@app.callback(Output("downloadj", "data"), [Input("download_json", "n_clicks")])
+def func(n_clicks):
+    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/README.md")
+
 
 @app.callback(
     Output("card_output_cep", "children"),
     Output("collapse_output_cep", "is_open"),
-    Output("collapse_download_cep", "is_open"),
+    #Output("collapse_download_cep", "is_open"),
     Output("status_code_cep", "children"),
     Output("collapse_mapa_cep", "is_open"),
     Output("iframe_mapa_cep", "src"),
@@ -134,4 +135,4 @@ def update_dropdown_cidade(cep):
                 children.append(html.P(f"{key.upper()}: {endereco.as_json()[key]}"))
         children.append(html.Hr())
 
-    return children, collapse, download, status_code, collapse_mapa, iframe_mapa
+    return children, collapse,status_code, collapse_mapa, iframe_mapa
