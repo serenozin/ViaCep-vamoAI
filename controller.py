@@ -19,7 +19,7 @@ class Andress:
         return self.model.to_json()
 
     def mapa(self):
-        json = self.as_json()
+        json = self.model.to_json()
 
         if isinstance(json, list):
             print(json[0]["cep"])
@@ -42,7 +42,7 @@ class SearchOptions:
                 
         return [{"label": i["Nome"], "value": i["Nome"]} for i in self.cities if i["Estado"] == id]
 
-class Download:
+class SearchDownload:
     def __init__(self, json):
         self.json = json
 

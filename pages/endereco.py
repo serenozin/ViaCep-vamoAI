@@ -4,7 +4,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
-from controller import Andress, SearchOptions
+from controller import Andress, SearchOptions, SearchDownload
 import dash_html_components as html  
 from dash_extensions import Download
 from dash_extensions.snippets import send_file
@@ -57,9 +57,9 @@ layout = html.Div(
                                                 ),
                                                   dbc.Col(
                                                     [
-                                                    html.Div([dbc.Button(".JSON",id='download_json', block=True, color="danger", size="sm", outline=True), Download(id='download')]),
+                                                    html.Div([dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True), Download(id='download_json')]),
                         
-                                                    html.Div([dbc.Button(".CSV",id='download_csv', block=True, color="danger", size="sm", outline=True), Download(id='download')])
+                                                    html.Div([dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True), Download(id='download_csv')])
                                                     ],
                                                 ),
                                             ]),
@@ -152,6 +152,8 @@ def update_dropdown_cidade(logradouro, estado, cidade):
     elif len(logradouro) >= 3:
         collapse = True
         collapse_mapa = True
+        SearchDownload(endereco.as_json()).as_csv()
+        SearchDownload(endereco.as_json()).as_json()
         iframe_mapa = endereco.mapa()
         status_code.append(status200)
         status_code.append(html.P())
@@ -163,6 +165,10 @@ def update_dropdown_cidade(logradouro, estado, cidade):
 
     return children, collapse, status_code, collapse_mapa, iframe_mapa
 
-@app.callback(Output("download", "data"), [Input("download_json", "n_clicks")], prevent_initial_call=True)
+@app.callback(Output("download_csv", "data"), [Input("b_download_csv", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/README.md")
+    return send_file("/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.csv")
+
+@app.callback(Output("download_json", "data"), [Input("b_download_json", "n_clicks")])
+def func(n_clicks):
+    return send_file("/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.json")

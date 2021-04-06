@@ -7,7 +7,7 @@ from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
 from dash_extensions.snippets import send_file
 from dash_extensions import Download
-from controller import Andress, SearchOptions
+from controller import Andress, SearchDownload
 from app import app
 
 layout = html.Div(
@@ -130,6 +130,8 @@ def update_dropdown_cidade(cep):
         collapse = True
         download = True
         collapse_mapa = True
+        SearchDownload(endereco.as_json()).as_csv()
+        SearchDownload(endereco.as_json()).as_json()
         iframe_mapa = endereco.mapa()
         status_code.append(status200)
         status_code.append(html.P())
