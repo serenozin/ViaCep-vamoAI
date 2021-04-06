@@ -1,4 +1,6 @@
 import pandas as pd
+from pandas.io import json
+from requests.api import head
 from model import Viacep, Cities, States, Mapa
 
 class Andress:
@@ -17,7 +19,7 @@ class Andress:
     
     def to_csv(self):
         json = self.to_json()
-        if json is list:
+        if isinstance(json, list):
             json_dict = {i: json[i] for i in range(len(json))}
         else: 
             json_dict = {0: json}
@@ -47,3 +49,14 @@ class SearchOptions:
                 id = dic["ID"]
                 
         return [{"label": i["Nome"], "value": i["Nome"]} for i in self.cities if i["Estado"] == id]
+
+class Download:
+    def __init__(self,json):
+        self.json = pd.read_json(json)
+    def generate_to_csv(self):
+        return self.json.to_csv(f'endereco.csv', index=None, header = True)
+    def generate_to_json(self):
+        return self.json.to_json(f'endereco.json', index= None, header = True)
+
+        
+    
