@@ -13,7 +13,13 @@ class Viacep:
             return requests.get(f"{self.url}/{self.uf}/{self.cidade}/{self.logradouro}/json")
         else:
             return requests.get(f"{self.url}/{self.cep}/json")
-        
+
+    def code(self):
+        return self.request().status_code
+    
+    def to_json(self):
+        return self.request().json() 
+
 class States:
     def __init__(self):
         self.url = "https://github.com/felipefdl/cidades-estados-brasil-json/raw/master/Estados.json"
@@ -32,7 +38,9 @@ class Mapa:
     def __init__(self, cep):
         self.cep = cep
         
-    def request(self):
+    def url(self):
         if "-" in self.cep:
             self.cep = self.cep[:5] + self.cep[6:]
         return f"https://www.google.com.br/maps?q={self.cep[:5]}-{self.cep[5:]},%20Brasil&output=embed"
+
+
