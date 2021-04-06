@@ -3,7 +3,7 @@ import dash_html_components as html
 
 card = dbc.Card(
     [
-        dbc.CardImg(src="https://i.pinimg.com/originals/6f/33/b4/6f33b41def2a0d0ea3d7d78f0ba45309.png", top=True),
+        dbc.CardImg(src="https://media-exp1.licdn.com/dms/image/C4D03AQFpPViamIaVmA/profile-displayphoto-shrink_800_800/0/1613079027780?e=1623283200&v=beta&t=NSF9lVeUXZLdY2sTA9gBJofC__GNG7b2zPhdMAa1tZY", top=True),
         dbc.CardBody(
             [
                 html.H4("Vithor", className="card-title"),
@@ -11,9 +11,9 @@ card = dbc.Card(
                     "Desenvolvedor Python",
                     className="card-text",
                 ),
-                dbc.Button("Linkedin", color="primary"),
-                dbc.Button("GitHub", color="danger"),
-                dbc.Button("Blog", color="primary"),
+                dbc.Button("Linkedin", color="primary", href="https://www.linkedin.com/in/vithor-data/"),
+                dbc.Button("GitHub", color="danger", href="https://github.com/Vithork/"),
+                dbc.Button("Blog", color="primary", href="https://vithor.tech/"),
             ]
         ),
     ],
@@ -21,7 +21,7 @@ card = dbc.Card(
 )
 card1 = dbc.Card(
     [
-        dbc.CardImg(src="https://lastfm.freetls.fastly.net/i/u/770x0/99c52b319a0440e1ab3d7dbb127a5e33.jpg", top=True),
+        dbc.CardImg(src="https://media-exp1.licdn.com/dms/image/C5603AQHasmiWEG3f-A/profile-displayphoto-shrink_800_800/0/1612849551283?e=1623283200&v=beta&t=B95GtN3khL1ebF0Vr0hYpAg_8b_P7sz7EFdvuNEbmrQ", top=True),
         dbc.CardBody(
             [
                 html.H4("Patryck", className="card-title"),
@@ -29,9 +29,8 @@ card1 = dbc.Card(
                     "Desenvolvedor Python",
                     className="card-text",
                 ),
-                dbc.Button("Linkedin", color="primary"),
-                dbc.Button("GitHub", color="danger"),
-                dbc.Button("Blog", color="primary"),
+                dbc.Button("Linkedin",  color="primary", href="https://www.linkedin.com/in/patryckharley/"),
+                dbc.Button("GitHub", color="danger", href="https://github.com/serenozin/"),
             ]
         ),
     ],
@@ -39,7 +38,7 @@ card1 = dbc.Card(
 )
 card2 = dbc.Card(
     [
-        dbc.CardImg(src="https://lastfm.freetls.fastly.net/i/u/770x0/ae2528c7962b65400a481c3574051f95.jpg", top=True),
+        dbc.CardImg(src="https://media-exp1.licdn.com/dms/image/C5603AQFRgwx0wE6VFg/profile-displayphoto-shrink_800_800/0/1596493485381?e=1623283200&v=beta&t=fL4OS3_bwWxKlY8FoOwk9zOYSUQvMfUz8FgtfP8GR7s", top=True),
         dbc.CardBody(
             [
                 html.H4("Demétrio", className="card-title"),
@@ -47,9 +46,8 @@ card2 = dbc.Card(
                     "Desenvolvedor Python",
                     className="card-text",
                 ),
-                dbc.Button("Linkedin", color="primary"),
-                dbc.Button("GitHub", color="danger"),
-                dbc.Button("Blog", color="primary"),
+                dbc.Button("Linkedin", color="primary", href="https://www.linkedin.com/in/dem%C3%A9trio-fragoso/"),
+                dbc.Button("GitHub", color="danger", href="https://github.com/demetriofragoso"),
             ]
         ),
     ],
