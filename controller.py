@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from pandas.io import json
 from requests.api import head
@@ -11,29 +12,20 @@ class Andress:
         self.cep = cep
         self.model = Viacep(uf=uf, cidade=cidade, logradouro=logradouro, cep=cep)
 
-    def code(self):
-        return self.model.request().status_code
-    
-    def to_json(self):
-        return self.model.request().json()
-    
-    def to_csv(self):
-        json = self.to_json()
-        if isinstance(json, list):
-            json_dict = {i: json[i] for i in range(len(json))}
-        else: 
-            json_dict = {0: json}
-        df = pd.DataFrame.from_dict(json_dict, orient='index')
-        return df.to_csv()
-    #bug corrigido, o isistance resolveu.
+    def response(self):
+        return self.model.request()
+
+    def as_json(self):
+        return self.model.to_json()
+
     def mapa(self):
-        json = self.to_json()
-        print(type(json))
+        json = self.as_json()
+
         if isinstance(json, list):
             print(json[0]["cep"])
-            return Mapa(json[0]["cep"]).request()
+            return Mapa(json[0]["cep"]).url()
         else:
-            return Mapa(json["cep"]).request()
+            return Mapa(json["cep"]).url()
 
 class SearchOptions:
     def __init__(self):
@@ -51,12 +43,22 @@ class SearchOptions:
         return [{"label": i["Nome"], "value": i["Nome"]} for i in self.cities if i["Estado"] == id]
 
 class Download:
-    def __init__(self,json):
-        self.json = pd.read_json(json)
-    def generate_to_csv(self):
-        return self.json.to_csv(f'endereco.csv', index=None, header = True)
-    def generate_to_json(self):
-        return self.json.to_json(f'endereco.json', index= None, header = True)
+    def __init__(self, json):
+        self.json = json
 
-        
-    
+    def as_csv(self):
+        if isinstance(self.json, list):
+            json_dict = {i: self.json[i] for i in range(len(self.json))}
+        else: 
+            json_dict = {0: self.json}
+        df = pd.DataFrame.from_dict(json_dict, orient='index')
+        return df.to_csv(r"/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.csv")
+
+    def as_json(self):
+        if isinstance(self.json, list):
+            json_dict = {i: self.json[i] for i in range(len(self.json))}
+        else: 
+            json_dict = {0: self.json}
+        df = pd.DataFrame.from_dict(json_dict)
+        return df.to_json(r"/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.json")
+
