@@ -156,7 +156,7 @@ def update_dropdown_cidade(logradouro, estado, cidade):
         iframe_mapa = endereco.mapa()
         status_code.append(status200)
         status_code.append(html.P())
-        for i in endereco.to_json():
+        for i in endereco.as_json():
             for key in i:
                 if i[key] != "":
                     children.append(html.P(f"{key.upper()}: {i[key]}"))
