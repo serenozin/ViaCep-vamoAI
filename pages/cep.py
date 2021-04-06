@@ -44,9 +44,9 @@ layout = html.Div(
                                                 ),
                                                  dbc.Col(
                                                     [
-                                                    html.Div([dbc.Button(".JSON",id='download_json', block=True, color="danger", size="sm", outline=True), Download(id='downloadj')]),
+                                                    html.Div([dbc.Button(".JSON",id='b_download_json_cep', block=True, color="danger", size="sm", outline=True), Download(id='download_json_cep')]),
                         
-                                                    html.Div([dbc.Button(".CSV",id='download_csv', block=True, color="danger", size="sm", outline=True), Download(id='download')])
+                                                    html.Div([dbc.Button(".CSV",id='b_download_csv_cep', block=True, color="danger", size="sm", outline=True), Download(id='download_csv_cep')])
                                                     ],
                                                 ),]
                                             ),
@@ -87,9 +87,13 @@ layout = html.Div(
         dbc.Row(),
     ]
 )
-@app.callback(Output("downloadj", "data"), [Input("download_json", "n_clicks")])
+@app.callback(Output("download_csv_cep", "data"), [Input("b_download_csv_cep", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/README.md")
+    return send_file("/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.csv")
+
+@app.callback(Output("download_json_cep", "data"), [Input("b_download_json_cep", "n_clicks")])
+def func(n_clicks):
+    return send_file("/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.json")
 
 
 @app.callback(
