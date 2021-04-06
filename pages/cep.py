@@ -129,9 +129,9 @@ def update_dropdown_cidade(cep):
         status_code.append(status200)
         status_code.append(html.P())
     
-        for key in endereco.to_json():
-            if endereco.to_json()[key] != "":
-                children.append(html.P(f"{key.upper()}: {endereco.to_json()[key]}"))
+        for key in endereco.as_json():
+            if endereco.as_json()[key] != "":
+                children.append(html.P(f"{key.upper()}: {endereco.as_json()[key]}"))
         children.append(html.Hr())
 
     return children, collapse, download, status_code, collapse_mapa, iframe_mapa
