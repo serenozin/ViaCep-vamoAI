@@ -8,7 +8,8 @@ external_stylesheets = ["https://unpkg.com/bootstrap-material-design@4.1.1/dist/
 app = dash.Dash(__name__,
     title='CEP VamoAI',
     update_title='Atualizando...',
-    external_stylesheets=external_stylesheets
+    external_stylesheets=external_stylesheets,
+    prevent_initial_callbacks=True
     )
 
 
