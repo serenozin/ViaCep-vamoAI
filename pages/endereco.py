@@ -4,9 +4,16 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
-
 from controller import Andress, SearchOptions
+import dash_html_components as html  
+from dash_extensions import Download
+from dash_extensions.snippets import send_file
 from app import app
+import dash
+import dash_html_components as html  
+from dash.dependencies import Output, Input
+from dash_extensions import Download
+from dash_extensions.snippets import send_file
 
 layout = html.Div(
     [
@@ -36,7 +43,7 @@ layout = html.Div(
                                         
                                         html.P(),
                                         dbc.Row(
-                                            dbc.Col(
+                                            dbc.Col([
                                                 dbc.Collapse(
                                                     [
                                                         dbc.Col(id="card_output"),
@@ -48,7 +55,14 @@ layout = html.Div(
                                                     
                                                     id="collapse_output",
                                                 ),
-                                            ),
+                                                  dbc.Col(
+                                                    [
+                                                    html.Div([dbc.Button(".JSON",id='download_json', block=True, color="danger", size="sm", outline=True), Download(id='download')]),
+                        
+                                                    html.Div([dbc.Button(".CSV",id='download_csv', block=True, color="danger", size="sm", outline=True), Download(id='download')])
+                                                    ],
+                                                ),
+                                            ]),
                                             
                                         ),
                                     ],
@@ -77,18 +91,7 @@ layout = html.Div(
                     id="collapse_mapa",
                     
                 ),
-                dbc.Collapse(
-                    dbc.Col(
-                        dbc.Row(
-                            [
-                            dbc.Button(".JSON", block=True, color="danger", size="sm", outline=True),
-                            dbc.Button(".CSV", block=True, color="danger", size="sm", outline=True)
-                            ],
-                        ),
-                        width=5,
-                    ),
-                    id="collapse_download"
-                )
+                
             ],
             justify="center",
             className="h-50"
@@ -97,7 +100,6 @@ layout = html.Div(
         dbc.Row(),
     ]
 )
-
 @app.callback(
     Output("dropdown_cidade", "options"),
     Input("dropdown_estado", "value"),
@@ -119,7 +121,7 @@ def update_dropdown_cidade(value):
 @app.callback(
     Output("card_output", "children"),
     Output("collapse_output", "is_open"),
-    Output("collapse_download", "is_open"),
+    #Output("collapse_download", "is_open"),
     Output("status_code", "children"),
     Output("collapse_mapa", "is_open"),
     Output("iframe_mapa", "src"),
@@ -138,12 +140,10 @@ def update_dropdown_cidade(logradouro, estado, cidade):
 
     if len(logradouro) == 0:
         collapse = False
-        download = False
         collapse_mapa = False
         iframe_mapa = None
     elif len(logradouro) < 3:
         collapse = True
-        download = False
         collapse_mapa = False
         iframe_mapa = None
         status_code.append(status400)
@@ -151,7 +151,6 @@ def update_dropdown_cidade(logradouro, estado, cidade):
         children.append(html.P("sua busca precisa ter pelo menos 3 caracteres"))
     elif len(logradouro) >= 3:
         collapse = True
-        download = True
         collapse_mapa = True
         iframe_mapa = endereco.mapa()
         status_code.append(status200)
@@ -162,4 +161,8 @@ def update_dropdown_cidade(logradouro, estado, cidade):
                     children.append(html.P(f"{key.upper()}: {i[key]}"))
             children.append(html.Hr())
 
-    return children, collapse, download, status_code, collapse_mapa, iframe_mapa
+    return children, collapse, status_code, collapse_mapa, iframe_mapa
+
+@app.callback(Output("download", "data"), [Input("download_json", "n_clicks")], prevent_initial_call=True)
+def func(n_clicks):
+    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/README.md")
