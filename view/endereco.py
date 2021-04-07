@@ -4,16 +4,11 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
-from controller import Andress, SearchOptions, SearchDownload
-import dash_html_components as html  
-from dash_extensions import Download
+from controller import Andress, SearchOptions, SearchDownload  
 from dash_extensions.snippets import send_file
-from app import app
-import dash
-import dash_html_components as html  
-from dash.dependencies import Output, Input
+from app import app 
 from dash_extensions import Download
-from dash_extensions.snippets import send_file
+
 
 layout = html.Div(
     [
@@ -170,14 +165,14 @@ def update_dropdown_cidade(logradouro, estado, cidade):
                 
             children.append(html.Hr())
     
-    counter = dbc.Row(dbc.Badge(f"O número de resultados foi: {index}"), justify="center")
+    counter = dbc.Row(dbc.Badge(f"{index} resultados"), justify="center")
 
     return children, collapse, status_code, collapse_mapa, iframe_mapa, counter
 
 @app.callback(Output("download_csv", "data"), [Input("b_download_csv", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.csv")
+    return send_file("./download/endereços.csv")
 
 @app.callback(Output("download_json", "data"), [Input("b_download_json", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.json")
+    return send_file("./download/endereços.json")
