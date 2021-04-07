@@ -2,9 +2,8 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 import dash
-from dash.dependencies import Output, Input
 from dash_extensions import Download
-from pages import endereco, cep
+from view import endereco, cep
 from app import app
 
 layout = html.Div(

@@ -1,2 +1,51 @@
 ,cep,logradouro,complemento,bairro,localidade,uf,ibge,gia,ddd,siafi
-0,28027-150,Rua Alcebíades Peçanha,,Parque Rosário,Campos dos Goytacazes,RJ,3301009,,22,5819
+0,28080-168,Rua K,,São Jorge,Campos dos Goytacazes,RJ,3301009,,22,5819
+1,28090-740,Rua F,,Parque Eldorado,Campos dos Goytacazes,RJ,3301009,,22,5819
+2,28080-100,Rua I,,Parque Prazeres,Campos dos Goytacazes,RJ,3301009,,22,5819
+3,28083-325,Rua F,,Parque Presidente Vargas,Campos dos Goytacazes,RJ,3301009,,22,5819
+4,28060-545,Rua F,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+5,28090-550,Rua D,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+6,28085-377,Rua C,(D Rodrigo),Parque Santa Rosa,Campos dos Goytacazes,RJ,3301009,,22,5819
+7,28080-212,Rua B,(Res Lapa I),Parque Vicente Gonçalves Dias,Campos dos Goytacazes,RJ,3301009,,22,5819
+8,28040-310,Rua I,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+9,28073-678,Rua G,,Parque Santos Dumont,Campos dos Goytacazes,RJ,3301009,,22,5819
+10,28060-554,Rua I,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+11,28090-580,Rua G,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+12,28040-210,Rua B,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+13,28080-665,Rua R,,Parque Prazeres,Campos dos Goytacazes,RJ,3301009,,22,5819
+14,28083-830,Rua H,,Parque Céu Azul,Campos dos Goytacazes,RJ,3301009,,22,5819
+15,28090-530,Rua A,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+16,28040-230,Rua D,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+17,28080-680,Rua T,,Parque Prazeres,Campos dos Goytacazes,RJ,3301009,,22,5819
+18,28024-417,Rua G,(Res João Maria),Parque João Maria,Campos dos Goytacazes,RJ,3301009,,22,5819
+19,28083-825,Rua O,,Parque Céu Azul,Campos dos Goytacazes,RJ,3301009,,22,5819
+20,28090-620,Rua N,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+21,28083-327,Rua B,(Farofa),Parque Presidente Vargas,Campos dos Goytacazes,RJ,3301009,,22,5819
+22,28060-532,Rua A,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+23,28040-250,Rua F,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+24,28070-050,Rua A,,Parque Guarus,Campos dos Goytacazes,RJ,3301009,,22,5819
+25,28020-670,Rua B,,Parque Novo Jockey,Campos dos Goytacazes,RJ,3301009,,22,5819
+26,28060-537,Rua D,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+27,28085-376,Rua B,(D Rodrigo),Parque Santa Rosa,Campos dos Goytacazes,RJ,3301009,,22,5819
+28,28040-270,Rua H,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+29,28090-040,Rua B,,Parque Ceasa,Campos dos Goytacazes,RJ,3301009,,22,5819
+30,28060-515,Rua J,,Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+31,28090-590,Rua H,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+32,28040-220,Rua C,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+33,28040-320,Rua J,,Ururaí,Campos dos Goytacazes,RJ,3301009,,22,5819
+34,28083-800,Rua L,,Parque Céu Azul,Campos dos Goytacazes,RJ,3301009,,22,5819
+35,28060-558,Rua L,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+36,28080-690,Rua U,,Parque Prazeres,Campos dos Goytacazes,RJ,3301009,,22,5819
+37,28024-418,Rua H,(Res João Maria),Parque João Maria,Campos dos Goytacazes,RJ,3301009,,22,5819
+38,28021-306,Rua F,,Vivendas do Coqueiro I,Campos dos Goytacazes,RJ,3301009,,22,5819
+39,28060-533,Rua B,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+40,28085-105,Rua C,,Custodópolis,Campos dos Goytacazes,RJ,3301009,,22,5819
+41,28090-658,Rua E,(Jd Eldorado),Parque Eldorado,Campos dos Goytacazes,RJ,3301009,,22,5819
+42,28090-540,Rua B,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+43,28080-745,Rua K,,Parque Prazeres,Campos dos Goytacazes,RJ,3301009,,22,5819
+44,28083-328,Rua H,,Parque Presidente Vargas,Campos dos Goytacazes,RJ,3301009,,22,5819
+45,28090-560,Rua E,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+46,28083-780,Rua I,,Parque Presidente Vargas,Campos dos Goytacazes,RJ,3301009,,22,5819
+47,28060-557,Rua J,(Faz Aldeia),Parque Aldeia,Campos dos Goytacazes,RJ,3301009,,22,5819
+48,28090-600,Rua I,,Codim,Campos dos Goytacazes,RJ,3301009,,22,5819
+49,28085-255,Rua H,(Prq Planície),Parque Santa Rosa,Campos dos Goytacazes,RJ,3301009,,22,5819
