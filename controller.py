@@ -52,7 +52,7 @@ class SearchDownload:
         else: 
             json_dict = {0: self.json}
         df = pd.DataFrame.from_dict(json_dict, orient='index')
-        return df.to_csv(r"/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.csv")
+        return df.to_csv(r"/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.csv")
 
     def as_json(self):
         if isinstance(self.json, list):
@@ -60,5 +60,5 @@ class SearchDownload:
         else: 
             json_dict = {0: self.json}
         df = pd.DataFrame.from_dict(json_dict)
-        return df.to_json(r"/home/serenozin/codes/Resilia/ViaCep-vamoAI/download/endereços.json")
+        return df.to_json(r"/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.json")
 
