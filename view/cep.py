@@ -89,11 +89,11 @@ layout = html.Div(
 )
 @app.callback(Output("download_csv_cep", "data"), [Input("b_download_csv_cep", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.csv")
+    return send_file("/./download/endereços.csv")
 
 @app.callback(Output("download_json_cep", "data"), [Input("b_download_json_cep", "n_clicks")])
 def func(n_clicks):
-    return send_file("/home/vithor/Área de Trabalho/ViaCep-vamoAI/download/endereços.json")
+    return send_file("./download/endereços.json")
 
 
 @app.callback(
