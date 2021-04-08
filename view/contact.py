@@ -26,7 +26,7 @@ card1 = dbc.Card(
             [
                 html.H4("Patryck", className="card-title"),
                 html.P(
-                    "Desenvolvedor Python",
+                    "Agroecólogo e data scientist em formação",
                     className="card-text",
                 ),
                 dbc.Button("Linkedin",  color="primary", href="https://www.linkedin.com/in/patryckharley/"),
