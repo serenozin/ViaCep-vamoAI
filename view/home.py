@@ -1,7 +1,6 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State
-from dash_extensions import Download
+from dash.dependencies import Input, Output
 from view import endereco, cep
 from app import app
 

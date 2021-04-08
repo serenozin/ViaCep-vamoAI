@@ -9,7 +9,7 @@ app.layout = Div(
     [
         navbar.navbar,
         home.layout,
-        Modal(contact.contatos, centered=True, id="modal-contatos", size="lg")
+        contact.contatos
     ]
 )
 server = app.server

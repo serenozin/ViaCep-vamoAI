@@ -42,7 +42,6 @@ navbar = dbc.Navbar(
     dark=True,
     className="mb-4",
     sticky='top',
-
 )
 
 
