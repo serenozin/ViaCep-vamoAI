@@ -1,10 +1,11 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from controller import Andress, SearchOptions, SearchDownload  
-from dash_extensions.snippets import send_file
-from app import app 
 from dash_extensions import Download
+from dash_extensions.snippets import send_file
+
+from app import app 
+from controller import Andress, SearchOptions, SearchDownload  
 
 
 layout = html.Div(
@@ -14,15 +15,12 @@ layout = html.Div(
                 dbc.Col(
                     [
                         dbc.Row(
-                            [
-                                # html.Img(src="https://institutomontanari.com.br/wp-content/uploads/2020/05/cadastro-no-ifood.png", height="400px", width="400"),
-                                        
+                            [    
                                 dbc.Card(
                                     [
                                         
-                                        html.H3("Endereço: "),
+                                        html.H3("Busca pelo endereço: "),
                                         html.P(),
-                                        # dbc.Input(id="input_cep", placeholder="CEP", type="text"),
                                         dbc.Select(id="dropdown_estado", options=SearchOptions().all_states(), placeholder="Estado"),
                                         html.P(),
                                         dbc.Select(id="dropdown_cidade", placeholder="Cidade", ),
@@ -31,8 +29,6 @@ layout = html.Div(
                                             dbc.Input(id="dropdown_rua", placeholder="Logradouro", type="text"),
                                             id="collapse_logradouro"
                                         ),
-                                        
-                                        
                                         html.P(),
                                         dbc.Row(
                                             dbc.Col([
@@ -41,22 +37,19 @@ layout = html.Div(
                                                         dbc.Col(id="card_output"),
                                                         html.Div(id="status_code"),
                                                         html.Div(id="counter"),
-                                                        # html.Div(id="card_output", style={'overflowy': 'scroll'},),
                                                         html.P(),
-                                                    
                                                     ],
-                                                    
                                                     id="collapse_output",
                                                 ),
-                                                  dbc.Col(
+                                                dbc.Col(
                                                     [
-                                                    html.Div([dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True), Download(id='download_json')]),
-                        
-                                                    html.Div([dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True), Download(id='download_csv')])
+                                                    dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True), 
+                                                    Download(id='download_json'),
+                                                    dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True), 
+                                                    Download(id='download_csv')
                                                     ],
                                                 ),
                                             ]),
-                                            
                                         ),
                                     ],
                                     body=True
@@ -65,38 +58,27 @@ layout = html.Div(
                         ), 
                     ],
                     lg=5,
-                    # align="stretch"
                 ),
                 dbc.Collapse(
                     dbc.Col(
                         dbc.Row(
-                            dbc.Card(
-                                [
-                                    html.Iframe(id="iframe_mapa", height=400, width=600, style={"border": "none"}),
-                            
-                                ],
+                            dbc.Card(html.Iframe(id="iframe_mapa", height=400, width=600, style={"border": "none"}),
                                 body=True,
                             ),
                         ),
-                        
-
                     ),
                     id="collapse_mapa",
-                    
                 ),
-                
             ],
             justify="center",
             className="h-50"
         ),
-        dbc.Row(),
-        dbc.Row(),
     ]
 )
+
 @app.callback(
     Output("dropdown_cidade", "options"),
     Input("dropdown_estado", "value"),
-    prevent_initial_call=True
 )
 def update_dropdown_cidade(estado):
     return SearchOptions().cities_from_state(estado)
@@ -104,7 +86,6 @@ def update_dropdown_cidade(estado):
 @app.callback(
     Output("collapse_logradouro", "is_open"),
     Input("dropdown_cidade", "value"),
-    prevent_initial_call=True
 )
 def update_dropdown_cidade(value):
     if value is not None:
@@ -114,16 +95,13 @@ def update_dropdown_cidade(value):
 @app.callback(
     Output("card_output", "children"),
     Output("collapse_output", "is_open"),
-    #Output("collapse_download", "is_open"),
     Output("status_code", "children"),
     Output("collapse_mapa", "is_open"),
     Output("iframe_mapa", "src"),
     Output("counter", "children"),
     Input("dropdown_rua", "value"),
     [State("dropdown_estado", "value"),
-    State("dropdown_cidade", "value"),
-    ],
-    prevent_initial_call=True
+    State("dropdown_cidade", "value"),],
 )
 def update_dropdown_cidade(logradouro, estado, cidade):
     index = 0
