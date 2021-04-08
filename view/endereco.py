@@ -1,8 +1,5 @@
-import dash
-import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
 from controller import Andress, SearchOptions, SearchDownload  
 from dash_extensions.snippets import send_file

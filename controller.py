@@ -1,7 +1,4 @@
-import os
 import pandas as pd
-from pandas.io import json
-from requests.api import head
 from model import Viacep, Cities, States, Mapa
 
 class Andress:

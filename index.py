@@ -1,13 +1,7 @@
-from logging import log
-from dash_bootstrap_components._components import Modal
-from dash_bootstrap_components._components.Card import Card
-from dash_bootstrap_components._components.ModalBody import ModalBody
 import dash_core_components as dcc
-from dash_core_components.Markdown import Markdown
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
-from dash_html_components.Center import Center
 from view import contact,home
 from app import app
 
