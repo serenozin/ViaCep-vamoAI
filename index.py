@@ -95,5 +95,7 @@ def toggle_modal(n, n2, is_open):
 def display_page(pathname):
     return home.layout
 
+server = app.server
+
 if __name__ == '__main__':
     app.run_server(debug=True,)
