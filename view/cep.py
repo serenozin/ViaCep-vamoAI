@@ -20,7 +20,7 @@ layout = html.Div(
                                 dbc.Card(
                                     [
                                         
-                                        html.H3("CEP: "),
+                                        html.H3("Busca pelo CEP:"),
                                         html.P(),
                                         dbc.Input(id="input_cep", placeholder="CEP", type="text"),
                                         
