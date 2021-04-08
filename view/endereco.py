@@ -23,7 +23,7 @@ layout = html.Div(
                                         html.P(),
                                         dbc.Select(id="dropdown_estado", options=SearchOptions().all_states(), placeholder="Estado"),
                                         html.P(),
-                                        dbc.Select(id="dropdown_cidade", placeholder="Cidade", ),
+                                        dbc.Spinner(dbc.Select(id="dropdown_cidade", placeholder="Cidade"), color="danger", type="grow"),
                                         html.P(),
                                         dbc.Collapse(
                                             dbc.Input(id="dropdown_rua", placeholder="Logradouro", type="text"),
@@ -31,25 +31,30 @@ layout = html.Div(
                                         ),
                                         html.P(),
                                         dbc.Row(
-                                            dbc.Col([
-                                                dbc.Collapse(
-                                                    [
-                                                        dbc.Col(id="card_output"),
-                                                        html.Div(id="status_code"),
-                                                        html.Div(id="counter"),
-                                                        html.P(),
-                                                    ],
-                                                    id="collapse_output",
-                                                ),
-                                                dbc.Col(
-                                                    [
-                                                    dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True), 
-                                                    Download(id='download_json'),
-                                                    dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True), 
-                                                    Download(id='download_csv')
-                                                    ],
-                                                ),
-                                            ]),
+                                            dbc.Col(
+                                                [   dbc.Spinner(
+                                                        dbc.Collapse(
+                                                            [
+                                                                dbc.Col(id="card_output"),
+                                                                html.Div(id="status_code"),
+                                                                html.Div(id="counter"),
+                                                                html.P(),
+                                                            ],
+                                                            id="collapse_output",
+                                                        ),
+                                                        type="grow",
+                                                        color="danger"
+                                                    ),
+                                                    dbc.Col(
+                                                        [
+                                                        dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True), 
+                                                        Download(id='download_json'),
+                                                        dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True), 
+                                                        Download(id='download_csv')
+                                                        ],
+                                                    ),
+                                                ]
+                                            ),
                                         ),
                                     ],
                                     body=True
@@ -75,6 +80,12 @@ layout = html.Div(
         ),
     ]
 )
+
+def status_badge(code):
+    if code == 200:
+        return dbc.Row(dbc.Badge("200 sucesso", color="success"), justify="center")
+    elif code == 404:
+        return dbc.Row(dbc.Badge("404 não encontrado", color="danger"), justify="center")
 
 @app.callback(
     Output("dropdown_cidade", "options"),
@@ -105,8 +116,6 @@ def update_dropdown_cidade(value):
 )
 def update_dropdown_cidade(logradouro, estado, cidade):
     index = 0
-    status200 = dbc.Row(dbc.Badge("200 success", color="success"), justify="center")
-    status400 = dbc.Row(dbc.Badge("400 bad request", color="danger"), justify="center")
     endereco = Andress(estado, cidade, logradouro)
     children = []
     status_code = []
@@ -120,16 +129,15 @@ def update_dropdown_cidade(logradouro, estado, cidade):
         collapse = True
         collapse_mapa = False
         iframe_mapa = None
-        status_code.append(status400)
+        status_code.append(status_badge(404))
         status_code.append(html.P())
-        children.append(html.P("sua busca precisa ter pelo menos 3 caracteres"))
     elif len(logradouro) >= 3:
         collapse = True
         collapse_mapa = True
         SearchDownload(endereco.as_json()).as_csv()
         SearchDownload(endereco.as_json()).as_json()
         iframe_mapa = endereco.mapa()
-        status_code.append(status200)
+        status_code.append(status_badge(endereco.code()))
         status_code.append(html.P())
 
         for i in endereco.as_json():
