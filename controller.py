@@ -1,3 +1,4 @@
+from io import SEEK_CUR
 import pandas as pd
 from model import Viacep, Cities, States, Mapa
 
@@ -9,6 +10,9 @@ class Andress:
         self.cep = cep
         self.model = Viacep(uf=uf, cidade=cidade, logradouro=logradouro, cep=cep)
 
+    def code(self):
+        return self.model.code()
+        
     def response(self):
         return self.model.request()
 
