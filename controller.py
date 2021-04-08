@@ -46,6 +46,7 @@ class SearchDownload:
     def as_csv(self):
         if isinstance(self.json, list):
             json_dict = {i: self.json[i] for i in range(len(self.json))}
+            print(json_dict)
         else: 
             json_dict = {0: self.json}
         df = pd.DataFrame.from_dict(json_dict, orient='index')
@@ -58,3 +59,4 @@ class SearchDownload:
             json_dict = {0: self.json}
         df = pd.DataFrame.from_dict(json_dict)
         return df.to_json(r"./download/endereços.json")
+

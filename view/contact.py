@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
-card = dbc.Card(
+card0 = dbc.Card(
     [
         dbc.CardImg(src="https://media-exp1.licdn.com/dms/image/C4D03AQFpPViamIaVmA/profile-displayphoto-shrink_800_800/0/1613079027780?e=1623283200&v=beta&t=NSF9lVeUXZLdY2sTA9gBJofC__GNG7b2zPhdMAa1tZY", top=True),
         dbc.CardBody(
@@ -76,9 +76,19 @@ card3 = dbc.Card(
 
 lista =[
         dbc.Row([
-            dbc.Col(card),
+            dbc.Col(card0),
             dbc.Col(card1),
             dbc.Col(card2),
             dbc.Col(card3)
     ])
+    ]
+
+contatos =[
+        dbc.ModalHeader(dbc.Col(html.H1("Contatos"),align="True")),
+        dbc.ModalBody(lista),
+        dbc.ModalFooter(
+            dbc.Button(
+                "Close", id="close-contatos", className="ml-auto"
+            )
+        ),
     ]

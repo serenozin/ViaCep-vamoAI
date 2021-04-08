@@ -1,12 +1,9 @@
-from functools import cached_property
-import dash
-import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-from dash_bootstrap_components import Collapse
 from dash.dependencies import Input, Output, State
 from dash_extensions.snippets import send_file
 from dash_extensions import Download
+
 from controller import Andress, SearchDownload
 from app import app
 

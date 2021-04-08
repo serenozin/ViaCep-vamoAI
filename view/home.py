@@ -1,7 +1,6 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-import dash
 from dash_extensions import Download
 from view import endereco, cep
 from app import app
@@ -13,7 +12,7 @@ layout = html.Div(
             dbc.Row(
                 [
                     dbc.Col(
-                        html.H1("Bem Vindo ao BUSCA CEP/ENDEREÇO", className="text-center"
+                        html.H1("Seja Bem Vinda(o) ao BUSCA CEP/ENDEREÇO", className="text-center"
                         ), 
                         className="mb-5 mt-5"
                     )
