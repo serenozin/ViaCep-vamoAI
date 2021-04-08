@@ -34,7 +34,7 @@ card1 = dbc.Card(
             ]
         ),
     ],
-    style={"width": "15rem"},
+    style={"width": "17rem"},
 )
 card2 = dbc.Card(
     [
@@ -53,24 +53,7 @@ card2 = dbc.Card(
     ],
     style={"width": "18rem"},
 )
-card3 = dbc.Card(
-    [
-        dbc.CardImg(src="https://revistafactual.com.br/wp-content/uploads/2020/05/gabriel-o-pensador-foto-luringa.jpg", top=True),
-        dbc.CardBody(
-            [
-                html.H4("Gabriel", className="card-title"),
-                html.P(
-                    "Desenvolvedor Python",
-                    className="card-text",
-                ),
-                dbc.Button("Linkedin", color="primary"),
-                dbc.Button("GitHub", color="danger"),
-                dbc.Button("Blog", color="primary"),
-            ]
-        ),
-    ],
-    style={"width": "18rem"},
-)
+
 
 
 
@@ -79,11 +62,11 @@ lista =[
             dbc.Col(card0),
             dbc.Col(card1),
             dbc.Col(card2),
-            dbc.Col(card3)
     ])
     ]
 
-contatos =[
+contatos = dbc.Modal(
+    [
         dbc.ModalHeader(dbc.Col(html.H1("Contatos"),align="True")),
         dbc.ModalBody(lista),
         dbc.ModalFooter(
@@ -91,4 +74,8 @@ contatos =[
                 "Close", id="close-contatos", className="ml-auto"
             )
         ),
-    ]
+    ], 
+    centered=True, 
+    id="modal-contatos", 
+    size="xl"
+)
