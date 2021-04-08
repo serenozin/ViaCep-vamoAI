@@ -5,10 +5,10 @@ from dash.dependencies import Input, Output, State
 from app import app
 
 dropdown = dbc.DropdownMenu(
-    children=[
-        dbc.DropdownMenuItem("Documentação", href="/"),
+    [
+        dbc.DropdownMenuItem("Documentação", href="https://github.com/serenozin/ViaCep-vamoAI/wiki"),
         dbc.DropdownMenuItem("Github", href="https://github.com/serenozin/ViaCep-vamoAI"),
-        dbc.DropdownMenuItem("Contato", id="buttom-contato")
+        dbc.DropdownMenuItem("Contatos", id="buttom-contato")
     ],
     nav = True,
     in_navbar = True,
@@ -20,7 +20,7 @@ navbar = dbc.Navbar(
             html.A(
                 dbc.Row(
                     [
-                        dbc.Col(html.Img(src="https://www.flaticon.com/svg/vstatic/svg/1287/1287847.svg?token=exp=1617291988~hmac=70ee1b13184ac0fbaccc8518242ea023", height="30px")),
+                        dbc.Col(html.Img(src="assets/favicon.ico", height="30px")),
                         dbc.Col(dbc.NavbarBrand("Busca", className="ml-2")),
                     ],
                     align="center",
@@ -41,6 +41,8 @@ navbar = dbc.Navbar(
     color="#666666",
     dark=True,
     className="mb-4",
+    sticky='top',
+
 )
 
 
