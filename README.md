@@ -5,6 +5,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/serenozin/ViaCep-vamoAIstyle=flat-square)
 ![GitHub contributors](https://img.shields.io/github/contributors/serenozin/ViaCep-vamoAI?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/serenozin/ViaCep-vamoAI?style=flat-square)
+![Home Page](https://img.shields.io/website?style=flat-square&up_message=Acesse&url=https%3A%2F%2Fbuscaendereco.herokuapp.com%2F)
 
 Projeto desenvolvido durante a formação Analista de Dados da Resilia🚀Ifood. 
 
@@ -16,7 +17,7 @@ Nesse projeto de final de módulo nos foi proposto a criação de uma aplicaçã
 ## Pré-requisitos
 
 Antes de você baixar nosso projeto:
-<!--- These are just example requirements. Add, duplicate or remove as required --->
+
 * Você tem que ter instalado pelo menos a versao 3.7 do Python `<Python/Is/good>`.
 * Você tem que utilizar `<Windows/Linux/Mac>`. Sem esses sistemas não irá conseguir rodar.
 * Você tem que ter instalado as bíbliotecas  `<Dash/Panda/Requests>`.
@@ -25,7 +26,7 @@ Antes de você baixar nosso projeto:
 
 Para instalar <Busa Endereço>, siga esses passos:
 
-Linux e macOS:
+Linux and macOS:
 ```
 git clone https://github.com/serenozin/ViaCep-vamoAI.git
 pip install dash
@@ -44,8 +45,10 @@ Para usar <Busca endereço>, siga esse passo:
 python index.py
 ```
 
+
 ## Contribua para <Busca endereço>
-Para contribuir para <Busca endereço>, siga esses passos:
+
+Para contriburi para <Busca endereço>, siga esses passos:
 
 1. De Fork nesse repositorio.
 2. Cria uma branch: `git checkout -b <branch_name>`.
