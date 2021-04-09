@@ -39,9 +39,7 @@ layout = html.Div(
                                                     ),
                                                     dbc.Col(
                                                         [
-                                                        dbc.Button(".JSON",id='b_download_json_cep', block=True, color="danger", size="sm", outline=True), 
                                                         Download(id='download_json_cep'),
-                                                        dbc.Button(".CSV",id='b_download_csv_cep', block=True, color="danger", size="sm", outline=True), 
                                                         Download(id='download_csv_cep')
                                                         ],
                                                     ),
@@ -58,6 +56,7 @@ layout = html.Div(
                 ),
                 dbc.Collapse(
                     dbc.Col(
+                        [
                         dbc.Row(
                             dbc.Card(
                                 [
@@ -67,6 +66,22 @@ layout = html.Div(
                                 body=True,
                             ),
                         ),
+                        dbc.Row(
+                            dbc.Card(
+                                [
+                                dbc.Row(html.H6("baixar resultado como:"), justify="center"),
+                                html.P(),
+                                dbc.Row(
+                                    [
+                                    dbc.Col(dbc.Button(".CSV",id='b_download_csv_cep', block=True, color="danger", size="sm", outline=True)),
+                                    dbc.Col(dbc.Button(".JSON",id='b_download_json_cep', block=True, color="danger", size="sm", outline=True)),
+                                    ],
+                                ),
+                                ],
+                                body=True
+                            ),
+                        ),
+                        ]
                     ),
                     id="collapse_mapa_cep",
                 ),

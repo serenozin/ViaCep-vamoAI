@@ -35,10 +35,16 @@ layout = html.Div(
                                                 [   dbc.Spinner(
                                                         dbc.Collapse(
                                                             [
-                                                                dbc.Col(id="card_output"),
-                                                                html.Div(id="status_code"),
-                                                                html.Div(id="counter"),
-                                                                html.P(),
+                                                                
+                                                                dbc.Row(
+                                                                    [
+                                                                    dbc.Col(html.Div(id="status_code")),
+                                                                    dbc.Col(html.Div(id="counter")),
+                                                                    html.P(),
+                                                                    ]
+                                                                ),
+                                                                dbc.Row(dbc.Col(id="card_output")), 
+                                                        
                                                             ],
                                                             id="collapse_output",
                                                         ),
@@ -47,9 +53,8 @@ layout = html.Div(
                                                     ),
                                                     dbc.Col(
                                                         [
-                                                        dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True), 
                                                         Download(id='download_json'),
-                                                        dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True), 
+                                                         
                                                         Download(id='download_csv')
                                                         ],
                                                     ),
@@ -66,11 +71,28 @@ layout = html.Div(
                 ),
                 dbc.Collapse(
                     dbc.Col(
+                        [
                         dbc.Row(
                             dbc.Card(html.Iframe(id="iframe_mapa", height=400, width=600, style={"border": "none"}),
                                 body=True,
                             ),
                         ),
+                        dbc.Row(
+                            dbc.Card(
+                                [
+                                dbc.Row(html.H6("baixar resultados como:"), justify="center"),
+                                html.P(),
+                                dbc.Row(
+                                    [
+                                    dbc.Col(dbc.Button(".CSV",id='b_download_csv', block=True, color="danger", size="sm", outline=True)),
+                                    dbc.Col(dbc.Button(".JSON",id='b_download_json', block=True, color="danger", size="sm", outline=True)),
+                                    ],
+                                ),
+                                ],
+                                body=True
+                            ),
+                        ),
+                        ]
                     ),
                     id="collapse_mapa",
                 ),
