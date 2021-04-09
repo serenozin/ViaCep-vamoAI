@@ -23,7 +23,7 @@ Antes de você baixar nosso projeto:
 
 ## Instalando <Busca Endereço>
 
-Para instalar <Busa Endereço>, siga esses passos:
+Para instalar <Busca Endereço>, siga esses passos:
 
 Linux and macOS:
 ```
