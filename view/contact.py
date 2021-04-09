@@ -67,7 +67,7 @@ lista =[
 
 contatos = dbc.Modal(
     [
-        dbc.ModalHeader(dbc.Col(html.H1("Contatos"),align="True")),
+        dbc.ModalHeader(html.H1("Contatos")),
         dbc.ModalBody(lista),
         dbc.ModalFooter(
             dbc.Button(
