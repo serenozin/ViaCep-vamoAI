@@ -2,7 +2,6 @@
 
 
 
-![GitHub repo size](https://img.shields.io/github/repo-size/serenozin/ViaCep-vamoAIstyle=flat-square)
 ![GitHub contributors](https://img.shields.io/github/contributors/serenozin/ViaCep-vamoAI?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/serenozin/ViaCep-vamoAI?style=flat-square)
 ![Home Page](https://img.shields.io/website?style=flat-square&up_message=Acesse&url=https%3A%2F%2Fbuscaendereco.herokuapp.com%2F)
