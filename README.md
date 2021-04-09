@@ -44,8 +44,6 @@ Para usar <Busca endereço>, siga esse passo:
 python index.py
 ```
 
-Add run commands and examples you think users will find useful. Provide an options reference for bonus points!
-
 ## Contribua para <Busca endereço>
 Para contribuir para <Busca endereço>, siga esses passos:
 
