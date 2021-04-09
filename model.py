@@ -43,4 +43,3 @@ class Mapa:
             self.cep = self.cep[:5] + self.cep[6:]
         return f"https://www.google.com.br/maps?q={self.cep[:5]}-{self.cep[5:]},%20Brasil&output=embed"
 
-
