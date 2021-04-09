@@ -11,11 +11,19 @@ layout = html.Div(
             dbc.Row(
                 [
                     dbc.Col(
-                        html.H1("Seja Bem Vinda(o) ao BUSCA CEP/ENDEREÇO", className="text-center"
-                        ), 
-                        className="mb-5 mt-5"
+                        dbc.Card(
+                            [
+                                html.P(),
+                                dbc.Row(html.H5("BEM-VINDA AO"), justify="center"),
+                                dbc.Row(html.H1("BUSCA ENDEREÇO"), justify="center"),
+                                html.P()
+                            ],
+                            body=True
+                        ),
+                        lg=4
                     )
-                ]
+                ],
+                justify="center"
             ),
 
             dbc.Row(
@@ -23,8 +31,8 @@ layout = html.Div(
                     dbc.Col(
                         dbc.Card(
                             [
-                                html.H3(
-                                    children='Selecione o tipo de busca:', 
+                                html.H4(
+                                    children='Selecione o método de busca:', 
                                     className="text-center"
                                 ),
                                 dbc.Row(
@@ -35,7 +43,7 @@ layout = html.Div(
                                         ),
 
                                         dbc.Col(
-                                            dbc.Button("Cidade ", href="/", color="danger",outline=True,block=True, id="button-endereco"),
+                                            dbc.Button("logradouro", href="/", color="danger",outline=True,block=True, id="button-endereco"),
                                             className="mt-3"
                                         ),
                                     ],
