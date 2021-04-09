@@ -19,7 +19,7 @@ layout = html.Div(
                                 dbc.Card(
                                     [
                                         
-                                        html.H3("Busca pelo endereço: "),
+                                        html.H3("Busca pelo logradouro:"),
                                         html.P(),
                                         dbc.Select(id="dropdown_estado", options=SearchOptions().all_states(), placeholder="Estado"),
                                         html.P(),
