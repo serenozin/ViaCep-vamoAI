@@ -3,8 +3,7 @@
 
 
 ![GitHub contributors](https://img.shields.io/github/contributors/serenozin/ViaCep-vamoAI?style=flat-square)
-![GitHub stars](https://img.shields.io/github/stars/serenozin/ViaCep-vamoAI?style=flat-square)
-<img alt="HomePage" src="https://img.shields.io/website?url=https%3A%2F%2Fbuscaendereco.herokuapp.com%2F">
+![GitHub stars](https://img.shields.io/github/stars/serenozin/ViaCep-vamoAI?style=flat-square)  
 Projeto desenvolvido durante a formação Analista de Dados da Resilia🚀Ifood. 
 
 # Projeto
