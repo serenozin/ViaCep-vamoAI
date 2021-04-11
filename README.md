@@ -3,13 +3,11 @@
 
 
 ![GitHub contributors](https://img.shields.io/github/contributors/serenozin/ViaCep-vamoAI?style=flat-square)
-![GitHub stars](https://img.shields.io/github/stars/serenozin/ViaCep-vamoAI?style=flat-square)
-![Home Page](https://img.shields.io/website?style=flat-square&up_message=Acesse&url=https%3A%2F%2Fbuscaendereco.herokuapp.com%2F)
-
+![GitHub stars](https://img.shields.io/github/stars/serenozin/ViaCep-vamoAI?style=flat-square)  
 Projeto desenvolvido durante a formação Analista de Dados da Resilia🚀Ifood. 
 
 # Projeto
-Nesse projeto de final de módulo nos foi proposto a criação de uma aplicação que consuma uma a API [Via CEP](https://viacep.com.br/) e que utilize o padrão de arquitetura de software MVC. Além disso, utilizamos o paradigma Orientada Objeto buscando seguir os príncipios do SOLID.
+Nesse projeto de final de módulo nos foi proposto a criação de uma aplicação que consuma a API [Via CEP](https://viacep.com.br/) e que utilize o padrão de arquitetura de software MVC. Além disso, utilizamos o paradigma Orientada Objeto buscando seguir os príncipios do SOLID.
 
 ![](https://cdn.discordapp.com/attachments/826176804888641586/830028328903770132/2021-04-09-07-30-22-_online-video-cutter.com_.gif)
 
@@ -23,7 +21,7 @@ Antes de você baixar nosso projeto:
 
 ## Instalando <Busca Endereço>
 
-Para instalar <Busa Endereço>, siga esses passos:
+Para instalar <Busca Endereço>, siga esses passos:
 
 Linux and macOS:
 ```
